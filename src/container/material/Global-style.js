@@ -5,13 +5,21 @@ const useStyles = makeStyles(() =>
     "@global": {
       body: {
         background: "#FFEBC2",
-        fontFamily: "Josefin Sans sans-serif !important",
       },
       "*": {
-        fontFamily: "Josefin Sans sans-serif !important",
+        fontFamily: "Nunito !important",
         margin: 0,
         padding: 0,
       },
+      ".MuiBadge-badge":{
+        width: '20px',
+        height: '20px',
+        borderRadius:' 50%',
+        margin: '5px 9px',
+        backgroundColor: '#FDC10C !important',
+        fontSize:' 6px',
+      }
+      
     },
   })
 );
