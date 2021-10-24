@@ -4,8 +4,7 @@ import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
-import GrainIcon from "@mui/icons-material/Grain";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Stack from "@mui/material/Stack";
 
 const Header = () => {
@@ -38,27 +37,20 @@ const Header = () => {
                 underline="hover"
                 sx={{ display: "flex", alignItems: "center" }}
                 color="inherit"
-                href="/"
+                href="#"
               >
                 <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                MUI
+                HOME
               </Link>
               <Link
                 underline="hover"
                 sx={{ display: "flex", alignItems: "center" }}
                 color="inherit"
-                href="/getting-started/installation/"
+                href="#"
               >
-                <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Core
+                <ShoppingCartIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                Shop
               </Link>
-              <Typography
-                sx={{ display: "flex", alignItems: "center" }}
-                color="text.primary"
-              >
-                <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Breadcrumb
-              </Typography>
             </Breadcrumbs>
             <Typography sx={{fontSize : 'h4.fontSize', fontWeight: '900'}}>
                 Shop
