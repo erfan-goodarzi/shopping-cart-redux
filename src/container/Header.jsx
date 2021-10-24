@@ -6,6 +6,8 @@ import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Stack from "@mui/material/Stack";
+import Products from "../components/Products";
+ 
 
 const Header = () => {
   return (
@@ -13,7 +15,7 @@ const Header = () => {
       <Container>
         <Box
           sx={{
-            height: "66vh",
+            height: "50vh",
             mt: "2rem",
             borderRadius: "40px",
             background:
@@ -59,6 +61,7 @@ const Header = () => {
                 Showing: 1-12 of 38 result
             </Typography>
           </Stack>
+        <Products/>
         </Box>
       </Container>
     </>
