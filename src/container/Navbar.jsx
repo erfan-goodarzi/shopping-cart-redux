@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
@@ -107,7 +108,7 @@ const Navbar = () => {
           </Typography>
           <Box
             sx={{
-              margin: "0 20rem",
+              margin: "0 19rem",
             }}
             onClick={(e) => e.preventDefault()}
           >
@@ -176,29 +177,29 @@ const Navbar = () => {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Typography
               sx={{
-                mr: 2,
+                mr: 0,
                 color: " #010101",
                 fontWeight: "700",
                 fontSize: "17px",
-                pt: 2
+                pt: 3,
               }}
             >
               $134.3
             </Typography>
-
-            <Avatar
-              sx={{
-                bgcolor: "#FFF6DB",
-                borderRadius: "50%",
-                padding: "4px 5px",
-              }}
-              variant="rounded"
-            >
-              <AddShoppingCartIcon
-                sx={{ color: "#010101", fontSize: " 1.5rem" }}
-              />
-             
-            </Avatar>
+            <IconButton color="warning" aria-label="add to shopping cart">
+              <Avatar
+                sx={{
+                  bgcolor: "#FFF6DB",
+                  borderRadius: "50%",
+                  padding: "4px 5px",
+                }}
+                variant="rounded"
+              >
+                <AddShoppingCartIcon
+                  sx={{ color: "#010101", fontSize: " 1.5rem" }}
+                />
+              </Avatar>
+            </IconButton>
             <Badge badgeContent={17} color="warning"></Badge>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>

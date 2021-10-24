@@ -15,7 +15,7 @@ const useStyles = makeStyles(() =>
         width: '20px',
         height: '20px',
         borderRadius:' 50%',
-        margin: '5px 9px',
+        margin: '10px 19px',
         backgroundColor: '#FDC10C !important',
         fontSize:' 6px',
       }
