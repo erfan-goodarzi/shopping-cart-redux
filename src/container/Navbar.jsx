@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
@@ -10,10 +10,14 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const state = useSelector((state) => state.Products.value);
+  const Product = useSelector((state) => state.Products.product);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -200,7 +204,7 @@ const Navbar = () => {
                 />
               </Avatar>
             </IconButton>
-            <Badge badgeContent={17} color="warning"></Badge>
+            <Badge badgeContent={state} color="warning"></Badge>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
         </Toolbar>
