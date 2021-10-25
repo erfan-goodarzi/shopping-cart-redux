@@ -17,7 +17,7 @@ const Header = () => {
           sx={{
             height: "50vh",
             mt: "2rem",
-            borderRadius: "40px",
+            borderRadius: "13px",
             background:
               "linear-gradient( 45deg, #FDB716, #FDC74F, #FEC00C, #FFD050)!important",
             boxShadow: "0 4px 30px rgb(0 0 0 / 10%)",
@@ -58,7 +58,7 @@ const Header = () => {
                 Shop
             </Typography>
             <Typography sx={{fontSize : 'default', fontWeight: '500', mr: '51px !important'}}>
-                Showing: 1-12 of 38 result
+                Showing: 1-9 of 38 result
             </Typography>
           </Stack>
         <Products/>
