@@ -5,20 +5,147 @@ import Link from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useSelector } from "react-redux";
+import Drawer from "@mui/material/Drawer";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const state = useSelector((state) => state.Products.value);
   const Product = useSelector((state) => state.Products.product);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [Cart, setCart] = useState({ right: false });
 
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
 
+    setCart({ ...Cart, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 460 }}
+      role="presentation"
+    >
+      <IconButton
+        sx={{
+          mt: 2,
+          ml: 3,
+          color: "#ed6c02",
+        }}
+        onClick={toggleDrawer(anchor, false)}
+      >
+        <ChevronLeftIcon />
+      </IconButton>
+      <Typography
+        sx={{
+          fontSize: 20,
+          textAlign: "center",
+          fontWeight: "700",
+          color: "#ed6c02",
+          mt: 3,
+          borderBottom: 1,
+          width: 247,
+          ml: 15,
+          pb: 1,
+        }}
+      >
+        My shopping cart
+      </Typography>
+      {console.log(Product)}
+
+      {Product.length === 0 ? (
+        <Alert
+          severity="info"
+          sx={{
+            fontSize: 17,
+            fontWeight: "500",
+            mt: 3,
+            width: 384,
+            ml: 2,
+            pb: 1,
+          }}
+        >
+          <AlertTitle
+            sx={{
+              fontSize: 20,
+              fontWeight: "700",
+            }}
+          >
+            Info
+          </AlertTitle>
+          You haven't added any products to your cart.
+        </Alert>
+      ) : (
+        Product &&
+        Object.keys(Product).map((inputKey) => (
+          <Box
+            sx={{
+              mt: 5,
+              ml: 3,
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+              }}
+            >
+              <Box>
+                <Avatar alt="Remy Sharp" src={Product[inputKey].img} />
+              </Box>
+              <Box
+                sx={{
+                  ml: 3,
+                }}
+              >
+                <Typography
+                  sx={{
+                    textAlign: "left",
+                    color: "#4a05b9",
+                    fontSize: 17,
+                    mt: "-1rem",
+                    pb: 1,
+                    fontWeight: "500",
+                  }}
+                >
+                  {Product[inputKey].title}
+                </Typography>
+                <Box sx={{ display: "flex", alignItems: 'center' }}>
+                  <Typography
+                  
+                  >{Product[inputKey].price}</Typography>
+                  <Button
+                  sx={{
+                    ml: 3
+                  }}
+                    color="error"
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                  >
+                    Delete
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        ))
+      )}
+    </Box>
+  );
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -190,7 +317,11 @@ const Navbar = () => {
             >
               $134.3
             </Typography>
-            <IconButton color="warning" aria-label="add to shopping cart">
+            <IconButton
+              onClick={toggleDrawer("right", true)}
+              color="warning"
+              aria-label="add to shopping cart"
+            >
               <Avatar
                 sx={{
                   bgcolor: "#FFF6DB",
@@ -204,6 +335,9 @@ const Navbar = () => {
                 />
               </Avatar>
             </IconButton>
+            <Drawer anchor={"right"} open={Cart["right"]}>
+              {list("right")}
+            </Drawer>
             <Badge badgeContent={state} color="warning"></Badge>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
