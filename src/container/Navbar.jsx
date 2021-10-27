@@ -17,6 +17,8 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useSelector } from "react-redux";
 import Drawer from "@mui/material/Drawer";
+import { RemoveFromCart } from "../features/product/productSlice";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,6 +26,33 @@ const Navbar = () => {
   const Product = useSelector((state) => state.Products.product);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [Cart, setCart] = useState({ right: false });
+  const dispatch = useDispatch()
+
+
+  // let arry = [
+  //   {
+  //     title: "ipone 13 pro",
+  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
+  //     price: "$89.900",
+  //     id: 1,
+  //   },
+  //   {
+  //     title: "ipone 13 pro",
+  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
+  //     price: "$89.900",
+  //     id: 2,
+  //   },
+  //   {
+  //     title: "ipone 13 pro",
+  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
+  //     price: "$89.900",
+  //     id: 3,
+  //   },
+  // ];
+
+   
+
+  // console.log(delete arry[1], arry);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -66,7 +95,6 @@ const Navbar = () => {
       >
         My shopping cart
       </Typography>
-      {console.log(Product)}
 
       {Product.length === 0 ? (
         <Alert
@@ -98,6 +126,7 @@ const Navbar = () => {
               mt: 5,
               ml: 3,
             }}
+            key={Product[inputKey].id}
           >
             <Box
               sx={{
@@ -124,14 +153,16 @@ const Navbar = () => {
                 >
                   {Product[inputKey].title}
                 </Typography>
-                <Box sx={{ display: "flex", alignItems: 'center' }}>
-                  <Typography
-                  
-                  >{Product[inputKey].price}</Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Typography>{Product[inputKey].price}</Typography>
                   <Button
-                  sx={{
-                    ml: 3
+                  onClick={() => {
+                    console.log(Product[inputKey].id)
+                    dispatch(RemoveFromCart(Product[inputKey].id))
                   }}
+                    sx={{
+                      ml: 3,
+                    }}
                     color="error"
                     variant="outlined"
                     startIcon={<DeleteIcon />}

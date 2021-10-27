@@ -13,9 +13,12 @@ export const ProductSlice = createSlice({
       state.value += 1;
       state.product.push(action.payload);
     },
+    RemoveFromCart: (state, action) => {
+      delete state.product[action.payload]
+    },
   },
 });
 
-export const { AddToCart } = ProductSlice.actions;
+export const { AddToCart, RemoveFromCart } = ProductSlice.actions;
 
 export default ProductSlice.reducer;

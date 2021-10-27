@@ -5,7 +5,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../features/product/productSlice";
 
-const Product = ({ img, title, price }) => {
+const Product = ({id, img, title, price }) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -73,8 +73,11 @@ const Product = ({ img, title, price }) => {
                 },
               }}
               color="success"
-              onClick={() => dispatch(AddToCart({title: title, img: img, price: price}))}
+              onClick={() => {
+                dispatch(AddToCart({title: title, img: img, price: price, id: id}))
+              }}
             >
+          
               <AddShoppingCartIcon
                 sx={{ color: "#010101", fontSize: " 1.5rem" }}
               />
