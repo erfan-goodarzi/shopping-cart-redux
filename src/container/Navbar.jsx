@@ -29,31 +29,6 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
 
-  // let arry = [
-  //   {
-  //     title: "ipone 13 pro",
-  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
-  //     price: "$89.900",
-  //     id: 1,
-  //   },
-  //   {
-  //     title: "ipone 13 pro",
-  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
-  //     price: "$89.900",
-  //     id: 2,
-  //   },
-  //   {
-  //     title: "ipone 13 pro",
-  //     img: "/static/media/PngItem_3494956.77cfb8d1.png",
-  //     price: "$89.900",
-  //     id: 3,
-  //   },
-  // ];
-
-   
-
-  // console.log(delete arry[1], arry);
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -118,6 +93,7 @@ const Navbar = () => {
           </AlertTitle>
           You haven't added any products to your cart.
         </Alert>
+      
       ) : (
         Product &&
         Object.keys(Product).map((inputKey) => (

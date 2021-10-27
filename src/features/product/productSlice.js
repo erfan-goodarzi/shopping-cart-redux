@@ -14,7 +14,10 @@ export const ProductSlice = createSlice({
       state.product.push(action.payload);
     },
     RemoveFromCart: (state, action) => {
-      delete state.product[action.payload]
+      const index = state.product.map(it => it.id).indexOf(action.payload);
+      if (index > -1) {
+        state.product.splice(index, 1);
+      }
     },
   },
 });
