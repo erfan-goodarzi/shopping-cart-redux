@@ -4,12 +4,30 @@ import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../features/product/productSlice";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Product = ({id, img, title, price }) => {
-  const dispatch = useDispatch()
+const useStyles = makeStyles((theme) => ({
+  product: {
+    // [theme.breakpoints.between("md", "lg")]: {
+
+    // },
+    [theme.breakpoints.between("sm", "md")]: {
+      width: '304px !important',
+      height: '379px !important ',
+    },
+    [theme.breakpoints.between("xs", "sm")]: {
+      backgroundColor: "green",
+    },
+  },
+}));
+
+const Product = ({ id, img, title, price }) => {
+  const dispatch = useDispatch();
+  const classes = useStyles();
   return (
     <>
       <Box
+        className={classes.product}
         sx={{
           width: 316,
           height: 412,
@@ -62,7 +80,7 @@ const Product = ({id, img, title, price }) => {
                 fontWeight: "400",
               }}
             >
-             ${price}
+              ${price}
             </Typography>
             <Button
               sx={{
@@ -74,10 +92,17 @@ const Product = ({id, img, title, price }) => {
               }}
               color="success"
               onClick={() => {
-                dispatch(AddToCart({title: title, img: img, price: price, id: id, quantity: 0}))
+                dispatch(
+                  AddToCart({
+                    title: title,
+                    img: img,
+                    price: price,
+                    id: id,
+                    quantity: 0,
+                  })
+                );
               }}
             >
-          
               <AddShoppingCartIcon
                 sx={{ color: "#010101", fontSize: " 1.5rem" }}
               />

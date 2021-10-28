@@ -7,13 +7,30 @@ import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Stack from "@mui/material/Stack";
 import Products from "../components/Products";
- 
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  header: {
+    // [theme.breakpoints.between("md", "lg")]: {
+  
+    // },
+    [theme.breakpoints.between("sm", "md")]: {
+      height: '31vh !important',
+    },
+    [theme.breakpoints.between("xs", "sm")]: {
+      backgroundColor: "green",
+    },
+  },
+}));
+
 
 const Header = () => {
+  const classes = useStyles();
   return (
     <>
       <Container>
         <Box
+          className={classes.header}
           sx={{
             height: "50vh",
             mt: "2rem",

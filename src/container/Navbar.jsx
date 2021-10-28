@@ -19,6 +19,22 @@ import { useSelector } from "react-redux";
 import Drawer from "@mui/material/Drawer";
 import { RemoveFromCart } from "../features/product/productSlice";
 import { useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles((theme) => ({
+  navbar: {
+    // [theme.breakpoints.between("md", "lg")]: {
+  
+    // },
+    [theme.breakpoints.between("sm", "md")]: {
+      margin: '0 4rem !important',
+    },
+    [theme.breakpoints.between("xs", "sm")]: {
+      backgroundColor: "green",
+    },
+  },
+}));
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,7 +43,7 @@ const Navbar = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [Cart, setCart] = useState({ right: false });
   const dispatch = useDispatch();
- 
+  const classes = useStyles();
 
   const total = Product.reduce((e, v) => e + v.price, 0).toFixed(2);
 
@@ -167,63 +183,66 @@ const Navbar = () => {
               display: "block",
               color: "#ed6c02",
             }}
-            >
+          >
             <Box
-            sx={{
-              alignItems: "center ",
-              display: 'flex',
-              justifyContent: "space-between",
-            }}>
-            <Typography
               sx={{
-                fontSize: 17,
-                fontWeight: "400",
+                alignItems: "center ",
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              SubTotal :
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: 15,
-                fontWeight: "400",
-              }}
-            >
-             ${total}
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: 17,
+                  fontWeight: "400",
+                }}
+              >
+                SubTotal :
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  fontWeight: "400",
+                }}
+              >
+                ${total}
+              </Typography>
             </Box>
             <Box
-            sx={{
-              alignItems: "center ",
-              display: 'flex',
-              justifyContent: "space-between",
-              mt: 1
-            }}>
-            <Typography
               sx={{
-                fontSize: 17,
-                fontWeight: "400",
+                alignItems: "center ",
+                display: "flex",
+                justifyContent: "space-between",
+                mt: 1,
               }}
             >
-              Discount :
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: 15,
-                fontWeight: "400",
-              }}
-            >
-             0%
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: 17,
+                  fontWeight: "400",
+                }}
+              >
+                Discount :
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  fontWeight: "400",
+                }}
+              >
+                0%
+              </Typography>
             </Box>
           </Box>
           <Box
             sx={{
               alignItems: "center ",
-              display: 'flex',
+              display: "flex",
               mt: 1,
               m: 4,
               justifyContent: "space-between",
-            }}>
+            }}
+          >
             <Typography
               sx={{
                 fontSize: 19,
@@ -238,9 +257,9 @@ const Navbar = () => {
                 fontWeight: "600",
               }}
             >
-             ${total}
+              ${total}
             </Typography>
-            </Box>
+          </Box>
         </Box>
       )}
     </Box>
@@ -336,73 +355,76 @@ const Navbar = () => {
           >
             Apple Store
           </Typography>
-          <Box
-            sx={{
-              margin: "0 19rem",
-            }}
-            onClick={(e) => e.preventDefault()}
-          >
-            <Link
-              underline="none"
+          
+            <Box
               sx={{
-                padding: "1px 22px",
-                color: " #010101",
-                fontWeight: "700",
-                fontSize: "17px",
+                margin: "0 19rem",
               }}
-              href="#"
+              onClick={(e) => e.preventDefault()}
+              className={classes.navbar}
             >
-              Home
-            </Link>
-            <Link
-              underline="none"
-              sx={{
-                padding: "1px 22px",
-                color: " #FA8907",
-                fontWeight: "700",
-                fontSize: "17px",
-              }}
-              href="#"
-            >
-              Shop
-            </Link>
-            <Link
-              underline="none"
-              sx={{
-                padding: "1px 22px",
-                color: " #010101",
-                fontWeight: "700",
-                fontSize: "17px",
-              }}
-              href="#"
-            >
-              Contact
-            </Link>
-            <Link
-              underline="none"
-              sx={{
-                padding: "1px 22px",
-                color: " #010101",
-                fontWeight: "700",
-                fontSize: "17px",
-              }}
-              href="#"
-            >
-              About us
-            </Link>
-            <Link
-              underline="none"
-              sx={{
-                padding: "1px 22px",
-                color: " #010101",
-                fontWeight: "700",
-                fontSize: "17px",
-              }}
-              href="#"
-            >
-              Blog
-            </Link>
-          </Box>
+              <Link
+                underline="none"
+                sx={{
+                  padding: "1px 22px",
+                  color: " #010101",
+                  fontWeight: "700",
+                  fontSize: "17px",
+                }}
+                href="#"
+              >
+                Home
+              </Link>
+              <Link
+                underline="none"
+                sx={{
+                  padding: "1px 22px",
+                  color: " #FA8907",
+                  fontWeight: "700",
+                  fontSize: "17px",
+                }}
+                href="#"
+              >
+                Shop
+              </Link>
+              <Link
+                underline="none"
+                sx={{
+                  padding: "1px 22px",
+                  color: " #010101",
+                  fontWeight: "700",
+                  fontSize: "17px",
+                }}
+                href="#"
+              >
+                Contact
+              </Link>
+              <Link
+                underline="none"
+                sx={{
+                  padding: "1px 22px",
+                  color: " #010101",
+                  fontWeight: "700",
+                  fontSize: "17px",
+                }}
+                href="#"
+              >
+                About us
+              </Link>
+              <Link
+                underline="none"
+                sx={{
+                  padding: "1px 22px",
+                  color: " #010101",
+                  fontWeight: "700",
+                  fontSize: "17px",
+                }}
+                href="#"
+              >
+                Blog
+              </Link>
+            </Box>
+     
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Typography
