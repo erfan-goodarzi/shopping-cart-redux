@@ -26,8 +26,10 @@ const Navbar = () => {
   const Product = useSelector((state) => state.Products.product);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [Cart, setCart] = useState({ right: false });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+ 
 
+  const total = Product.reduce((e, v) => e + v.price, 0).toFixed(2);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -93,16 +95,15 @@ const Navbar = () => {
           </AlertTitle>
           You haven't added any products to your cart.
         </Alert>
-      
       ) : (
         Product &&
-        Object.keys(Product).map((inputKey) => (
+        Object.keys(Product).map((inputKey, index) => (
           <Box
             sx={{
               mt: 5,
               ml: 3,
             }}
-            key={Product[inputKey].id}
+            key={index}
           >
             <Box
               sx={{
@@ -130,12 +131,12 @@ const Navbar = () => {
                   {Product[inputKey].title}
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography>{Product[inputKey].price}</Typography>
+                  <Typography>${Product[inputKey].price}</Typography>
                   <Button
-                  onClick={() => {
-                    console.log(Product[inputKey].id)
-                    dispatch(RemoveFromCart(Product[inputKey].id))
-                  }}
+                    onClick={() => {
+                      console.log(Product[inputKey].id);
+                      dispatch(RemoveFromCart(Product[inputKey].id));
+                    }}
                     sx={{
                       ml: 3,
                     }}
@@ -150,6 +151,97 @@ const Navbar = () => {
             </Box>
           </Box>
         ))
+      )}
+      {Product.length === 0 ? null : (
+        <Box
+          sx={{
+            mt: 8,
+          }}
+        >
+          <Box
+            sx={{
+              borderBottom: 1,
+              width: 400,
+              ml: 4,
+              pb: 1,
+              display: "block",
+              color: "#ed6c02",
+            }}
+            >
+            <Box
+            sx={{
+              alignItems: "center ",
+              display: 'flex',
+              justifyContent: "space-between",
+            }}>
+            <Typography
+              sx={{
+                fontSize: 17,
+                fontWeight: "400",
+              }}
+            >
+              SubTotal :
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 15,
+                fontWeight: "400",
+              }}
+            >
+             ${total}
+            </Typography>
+            </Box>
+            <Box
+            sx={{
+              alignItems: "center ",
+              display: 'flex',
+              justifyContent: "space-between",
+              mt: 1
+            }}>
+            <Typography
+              sx={{
+                fontSize: 17,
+                fontWeight: "400",
+              }}
+            >
+              Discount :
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 15,
+                fontWeight: "400",
+              }}
+            >
+             0%
+            </Typography>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              alignItems: "center ",
+              display: 'flex',
+              mt: 1,
+              m: 4,
+              justifyContent: "space-between",
+            }}>
+            <Typography
+              sx={{
+                fontSize: 19,
+                fontWeight: "800",
+              }}
+            >
+              Total :
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 17,
+                fontWeight: "600",
+              }}
+            >
+             ${total}
+            </Typography>
+            </Box>
+        </Box>
       )}
     </Box>
   );

@@ -62,7 +62,7 @@ const Product = ({id, img, title, price }) => {
                 fontWeight: "400",
               }}
             >
-              {price}
+             ${price}
             </Typography>
             <Button
               sx={{
@@ -74,7 +74,7 @@ const Product = ({id, img, title, price }) => {
               }}
               color="success"
               onClick={() => {
-                dispatch(AddToCart({title: title, img: img, price: price, id: id}))
+                dispatch(AddToCart({title: title, img: img, price: price, id: id, quantity: 0}))
               }}
             >
           
