@@ -24,14 +24,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
-    // [theme.breakpoints.between("md", "lg")]: {
-  
-    // },
     [theme.breakpoints.between("sm", "md")]: {
-      margin: '0 4rem !important',
+      margin: "0 4rem !important",
     },
     [theme.breakpoints.between("xs", "sm")]: {
-      backgroundColor: "green",
+      margin: '0 0rem !important'
+    },
+  },
+  link: {
+    [theme.breakpoints.between("xs", "sm")]: {
+      fontSize: "12px !important",
+    },
+  },
+  logo: {
+    [theme.breakpoints.between("xs", "sm")]: {
+      marginLeft: '-58px !important',
     },
   },
 }));
@@ -340,6 +347,7 @@ const Navbar = () => {
       >
         <Toolbar sx={{ margin: "13px 71px" }}>
           <Typography
+           className={classes.logo}
             variant="h6"
             noWrap
             component="div"
@@ -355,84 +363,89 @@ const Navbar = () => {
           >
             Apple Store
           </Typography>
-          
-            <Box
+
+          <Box
+            sx={{
+              margin: "0 19rem",
+            }}
+            onClick={(e) => e.preventDefault()}
+            className={classes.navbar}
+          >
+            <Link
+              className={classes.link}
+              underline="none"
               sx={{
-                margin: "0 19rem",
+                padding: "1px 22px",
+                color: " #010101",
+                fontWeight: "700",
+                fontSize: "17px",
               }}
-              onClick={(e) => e.preventDefault()}
-              className={classes.navbar}
+              href="#"
             >
-              <Link
-                underline="none"
-                sx={{
-                  padding: "1px 22px",
-                  color: " #010101",
-                  fontWeight: "700",
-                  fontSize: "17px",
-                }}
-                href="#"
-              >
-                Home
-              </Link>
-              <Link
-                underline="none"
-                sx={{
-                  padding: "1px 22px",
-                  color: " #FA8907",
-                  fontWeight: "700",
-                  fontSize: "17px",
-                }}
-                href="#"
-              >
-                Shop
-              </Link>
-              <Link
-                underline="none"
-                sx={{
-                  padding: "1px 22px",
-                  color: " #010101",
-                  fontWeight: "700",
-                  fontSize: "17px",
-                }}
-                href="#"
-              >
-                Contact
-              </Link>
-              <Link
-                underline="none"
-                sx={{
-                  padding: "1px 22px",
-                  color: " #010101",
-                  fontWeight: "700",
-                  fontSize: "17px",
-                }}
-                href="#"
-              >
-                About us
-              </Link>
-              <Link
-                underline="none"
-                sx={{
-                  padding: "1px 22px",
-                  color: " #010101",
-                  fontWeight: "700",
-                  fontSize: "17px",
-                }}
-                href="#"
-              >
-                Blog
-              </Link>
-            </Box>
-     
+              Home
+            </Link>
+            <Link
+              className={classes.link}
+              underline="none"
+              sx={{
+                padding: "1px 22px",
+                color: " #FA8907",
+                fontWeight: "700",
+                fontSize: "17px",
+              }}
+              href="#"
+            >
+              Shop
+            </Link>
+            <Link
+              className={classes.link}
+              underline="none"
+              sx={{
+                padding: "1px 22px",
+                color: " #010101",
+                fontWeight: "700",
+                fontSize: "17px",
+              }}
+              href="#"
+            >
+              Contact
+            </Link>
+            <Link
+              className={classes.link}
+              underline="none"
+              sx={{
+                padding: "1px 22px",
+                color: " #010101",
+                fontWeight: "700",
+                fontSize: "17px",
+              }}
+              href="#"
+            >
+              About us
+            </Link>
+            <Link
+              className={classes.link}
+              underline="none"
+              sx={{
+                padding: "1px 22px",
+                color: " #010101",
+                fontWeight: "700",
+                fontSize: "17px",
+              }}
+              href="#"
+            >
+              Blog
+            </Link>
+          </Box>
+
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: "flex" }}>
             <Typography
               sx={{
                 mr: 0,
                 color: " #010101",
                 fontWeight: "700",
-                fontSize: "17px",
+                fontSize: {lg: "17px", sm: '14px'},
                 pt: 3,
               }}
             >
@@ -461,7 +474,6 @@ const Navbar = () => {
             </Drawer>
             <Badge badgeContent={state} color="warning"></Badge>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
