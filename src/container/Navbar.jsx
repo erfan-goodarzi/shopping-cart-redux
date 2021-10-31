@@ -21,15 +21,17 @@ import { RemoveFromCart } from "../features/product/productSlice";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles((theme) => ({
   navbar: {
     [theme.breakpoints.between("sm", "md")]: {
-      margin: "0 4rem !important",
+      margin: "0 7rem !important",
     },
     [theme.breakpoints.between("xs", "sm")]: {
-      margin: '0 0rem !important'
+      margin: "0 3rem !important",
     },
+    [theme.breakpoints.down('xs')]:{
+      margin: '0 -4rem !important'
+    }
   },
   link: {
     [theme.breakpoints.between("xs", "sm")]: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     [theme.breakpoints.between("xs", "sm")]: {
-      marginLeft: '-58px !important',
+      marginLeft: "-58px !important",
     },
   },
 }));
@@ -67,7 +69,7 @@ const Navbar = () => {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 460 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : {lg: 460, xs: 360} }}
       role="presentation"
     >
       <IconButton
@@ -89,7 +91,7 @@ const Navbar = () => {
           mt: 3,
           borderBottom: 1,
           width: 247,
-          ml: 15,
+          ml: {lg: 15, xs: 8},
           pb: 1,
         }}
       >
@@ -184,7 +186,7 @@ const Navbar = () => {
           <Box
             sx={{
               borderBottom: 1,
-              width: 400,
+              width: {lg: 400, xs: 312},
               ml: 4,
               pb: 1,
               display: "block",
@@ -345,9 +347,9 @@ const Navbar = () => {
         }}
         position="static"
       >
-        <Toolbar sx={{ margin: "13px 71px" }}>
+        <Toolbar sx={{ margin: "13px 71px", display: {lg: 'flex', md: 'flex', sm: 'flex', xs: 'block'} }}>
           <Typography
-           className={classes.logo}
+            className={classes.logo}
             variant="h6"
             noWrap
             component="div"
@@ -375,7 +377,7 @@ const Navbar = () => {
               className={classes.link}
               underline="none"
               sx={{
-                padding: "1px 22px",
+                padding: {lg: "1px 22px", xs: '0 13px'},
                 color: " #010101",
                 fontWeight: "700",
                 fontSize: "17px",
@@ -388,7 +390,7 @@ const Navbar = () => {
               className={classes.link}
               underline="none"
               sx={{
-                padding: "1px 22px",
+                padding: {lg: "1px 22px", xs: '0 13px'},
                 color: " #FA8907",
                 fontWeight: "700",
                 fontSize: "17px",
@@ -401,7 +403,7 @@ const Navbar = () => {
               className={classes.link}
               underline="none"
               sx={{
-                padding: "1px 22px",
+                padding: {lg: "1px 22px", xs: '0 13px'},
                 color: " #010101",
                 fontWeight: "700",
                 fontSize: "17px",
@@ -414,7 +416,7 @@ const Navbar = () => {
               className={classes.link}
               underline="none"
               sx={{
-                padding: "1px 22px",
+                padding: {lg: "1px 22px", xs: '0 13px'},
                 color: " #010101",
                 fontWeight: "700",
                 fontSize: "17px",
@@ -427,7 +429,7 @@ const Navbar = () => {
               className={classes.link}
               underline="none"
               sx={{
-                padding: "1px 22px",
+                padding: {lg: "1px 22px", xs: '0 13px'},
                 color: " #010101",
                 fontWeight: "700",
                 fontSize: "17px",
@@ -439,13 +441,13 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", justifyContent: {xs: 'center'}, mt: 2 }}>
             <Typography
               sx={{
                 mr: 0,
                 color: " #010101",
                 fontWeight: "700",
-                fontSize: {lg: "17px", sm: '14px'},
+                fontSize: { lg: "17px", sm: "14px" },
                 pt: 3,
               }}
             >
@@ -475,9 +477,9 @@ const Navbar = () => {
             <Badge badgeContent={state} color="warning"></Badge>
           </Box>
         </Toolbar>
+        {renderMobileMenu}
+        {renderMenu}
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
     </Box>
   );
 };

@@ -15,11 +15,18 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.between("xs", "sm")]: {
       height: "300px !important",
     },
+    [theme.breakpoints.down("xs")]: {
+      height: "340px !important",
+    },
   },
   image: {
     [theme.breakpoints.between("xs", "sm")]: {
       width: "52% !important",
       margin: "2rem 3rem !important",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "42% !important",
+      margin: "2rem 6rem !important",
     },
   },
 }));
@@ -92,7 +99,7 @@ const Product = ({ id, img, title, price }) => {
             <Button
               sx={{
                 bgcolor: "#ffebc2",
-                m: { lg: "2px 12px", sm: "0 63px" },
+                m: { lg: "2px 12px", sm: "0 63px", xs: "10px 127px"  },
                 "&:hover": {
                   bgcolor: "#ddd",
                 },

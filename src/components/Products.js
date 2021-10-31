@@ -14,27 +14,22 @@ const Products = () => {
   return (
     <>
       <Stack
-        direction="row"
+        direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="center"
         spacing={8}
       >
-        <Product
-          id={0}
-          title="ipone 13 pro"
-          price={89.900}
-          img={ProductImg1}
-        />
+        <Product id={0} title="ipone 13 pro" price={89.9} img={ProductImg1} />
         <Product
           id={1}
           title="Beats Studio3 Wireless Over"
           price={349.95}
           img={ProductImg2}
         />
-        <Product id={2} title="AirPods Pro" price={249.00} img={ProductImg3} />
+        <Product id={2} title="AirPods Pro" price={249.0} img={ProductImg3} />
       </Stack>
       <Stack
-        direction="row"
+        direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="center"
         spacing={8}
@@ -48,7 +43,7 @@ const Products = () => {
         <Product
           id={4}
           title="AirPods (3rd generation)"
-          price={179.00}
+          price={179.0}
           img={ProductImg5}
         />
         <Product
@@ -59,7 +54,7 @@ const Products = () => {
         />
       </Stack>
       <Stack
-        direction="row"
+        direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="center"
         spacing={8}
@@ -73,7 +68,7 @@ const Products = () => {
         <Product
           id={7}
           title="Refurbished 13.3-inch MacBook Pro Apple M1 Chip with 8‑Core CPU and 8‑Core GPU"
-          price={1499.00}
+          price={1499.0}
           img={ProductImg8}
         />
         <Product

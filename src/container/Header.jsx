@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Stack from "@mui/material/Stack";
 import Products from "../components/Products";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,14 +12,13 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   header: {
     // [theme.breakpoints.between("md", "lg")]: {
-  
+
     // },
     [theme.breakpoints.between("sm", "md")]: {
-      height: '31vh !important',
+      height: "31vh !important",
     },
   },
 }));
-
 
 const Header = () => {
   const classes = useStyles();
@@ -40,15 +39,16 @@ const Header = () => {
           }}
         >
           <Stack
-            sx={{mt: 9}}
-            direction="row"
-            justifyContent="space-between"
+            sx={{ mt: 9 }}
+            direction={{ xs: "column", sm: "row" }}
+            justifyContent={{ xs: "center", sm: "space-between" }}
             alignItems="center"
             spacing={2}
           >
-            <Breadcrumbs 
-            sx={{ml: 3}}
-            aria-label="breadcrumb">
+            <Breadcrumbs
+              sx={{ ml: { lg: 3, xs: 0 }, fontSize: { xs: 12, lg: "1rem" } }}
+              aria-label="breadcrumb"
+            >
               <Link
                 underline="hover"
                 sx={{ display: "flex", alignItems: "center" }}
@@ -68,14 +68,20 @@ const Header = () => {
                 Shop
               </Link>
             </Breadcrumbs>
-            <Typography sx={{fontSize : 'h4.fontSize', fontWeight: '900'}}>
-                Shop
+            <Typography sx={{ fontSize: "h4.fontSize", fontWeight: "900" }}>
+              Shop
             </Typography>
-            <Typography sx={{fontSize : 'default', fontWeight: '500', mr: '51px !important'}}>
-                Showing: 1-9 of 38 result
+            <Typography
+              sx={{
+                fontSize: "default",
+                fontWeight: "500",
+                mr: { lg: "51px !important", xs: 0 },
+              }}
+            >
+              Showing: 1-9 of 38 result
             </Typography>
           </Stack>
-        <Products/>
+          <Products />
         </Box>
       </Container>
     </>
@@ -83,5 +89,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
