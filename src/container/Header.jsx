@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.between("sm", "md")]: {
       height: '31vh !important',
     },
-    [theme.breakpoints.between("xs", "sm")]: {
-      backgroundColor: "green",
-    },
   },
 }));
 
